@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+		<script type="text/javascript" src="jscharts.js"></script>
+		  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+	</head>
+	<body>
+		<script>
+/*		var x;	
+		x = 'chicken';
+		$.ajax({
+			url: 'http://api.wolframalpha.com/v2/query?appid=8Y8V8G-4P4U2G8RTJ&input=calories%20in%20a%20'+x+'&format=html',
+			success: function(results){
+				getCal(results);
+			}
+			});
+		function getCal(results){
+			var rootElement = results.documentElement.outerHTML;
+			var loc = rootElement.indexOf('Cal  (dietary Calories)');
+			var cal = rootElement.substring(loc-4,loc);
+			if (cal.charAt(0)=='"')
+				cal=cal.substring(1,3);
+			console.log(cal);
+		}*/
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Calories');
+
+      data.addRows([
+      [1, 6333],  [2, 5200],  [3, 6333],  [4, 6666],  [5, 5300],
+        [6, 4000],  [7, 15833.33333333334],  [8, 23333.33333333334],  [9, 19866.666666666667],  [10, 49666.666666667], [11, 4.966666666666667],[12,4.966666666666667]
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Month'
+        },
+        vAxis: {
+          title: 'Avg. Calories'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+		</script>
+	</body>
+</html>
+	
